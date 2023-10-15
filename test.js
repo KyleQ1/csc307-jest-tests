@@ -18,24 +18,24 @@ test('contain 2 stock', () => {
     expect(p.getStocks()).toEqual(2);
     });
 test('buy 1 stock', () => { 
-    p.buyStock('ABC', 5);
-    expect(p.getStocks()).toEqual(3);
+    p.buyStock('GME', 5);
+    expect(p.getStocks()).toEqual(2);
     });
 test('sell 1 stock', () => {
-    p.sellStock('ABC', 4);
-    expect(p.getStocks()).toEqual(3);
+    p.sellStock('GME', 9);
+    expect(p.getStocks()).toEqual(2);
     });
 test('get stock amount', () => {
-    expect(p.getStockAmount('GME')).toEqual(5);
-    expect(p.getStockAmount('ABC')).toEqual(1);
+    expect(p.getStockAmount('GME')).toEqual(1);
+    expect(p.getStockAmount('RBLX')).toEqual(10);
     });
 test('sell a stock completely', () => {
-    p.sellStock('ABC', 1);
-    expect(p.getStocks()).toEqual(2);
-    expect(p.getStockAmount('ABC')).toEqual(0);
+    p.sellStock('GME', 1);
+    expect(p.getStocks()).toEqual(1);
+    expect(p.getStockAmount('GME')).toEqual(0);
     });
 test('try to sell unowned shares', () => {
     expect(() => {
-        p.sellStock('GME', 6);
+        p.sellStock('RBLX', 11);
     }).toThrow('ShareSaleException');
     });

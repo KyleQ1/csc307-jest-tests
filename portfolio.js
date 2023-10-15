@@ -13,7 +13,17 @@ class portfolio {
         return this.stocks.length;
     }
     buyStock(ticker, amount) {
-        this.stocks.push(new stocks(ticker, amount));
+        // Check if stock already exists
+        let stockExists = false;
+        this.stocks.find((stock) => {
+            if (stock.ticker === ticker) {
+                stockExists = true;
+                stock.amount += amount;
+            }
+        });
+        if (!stockExists) {
+            this.stocks.push(new stocks(ticker, amount));
+        }
     }
     sellStock(ticker, amount) {
         this.stocks.find((stock) => {
